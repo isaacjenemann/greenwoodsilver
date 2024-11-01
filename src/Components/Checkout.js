@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 // Load Stripe using the public key from the environment
-const stripePromise = loadStripe(process.env.PUBLIC_KEY);
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+
+
 
 const Checkout = ({ cartItems }) => {
+  console.log(process.env.STRIPE_PUBLIC_KEY)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 

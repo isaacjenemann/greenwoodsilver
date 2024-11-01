@@ -47,11 +47,10 @@ function Menu() {
             ref={dropdownRef}
             onClick={toggleDropdown}
           >
-            <a className="menu-button">
+            <button className="menu-button">
               shop
               {/* Conditional arrow icon */}
-              {"   "}
-            </a>
+            </button>
             {isDropdownOpen && (
               <div className="dropdown">
                 <a className="dropdown-item" href="/shop/rings">
@@ -73,13 +72,17 @@ function Menu() {
             )}
           </div>
 
-          <a className="menu-button">custom</a>
-          <a className="menu-button">cart</a>
+          <a className="menu-button" href="/custom">
+            custom
+          </a>
+          <a className="menu-button" href="/cart">
+            cart
+          </a>
         </div>
       </div>
 
       <div className="footer">
-        <a>
+        <a href="https://www.instagram.com/greenwood.silver/">
           <img id="footer-social" src="/Assets/instagram.png" alt="Instagram" />
         </a>
       </div>

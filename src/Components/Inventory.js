@@ -7,6 +7,7 @@ export const inventory = [
     category: "ring",
     description: "",
     featured: true,
+    alt: "alt text",
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ export const inventory = [
     category: "ring",
     image: "/Assets/greenwood1.jpg",
     featured: true,
+    alt: "alt text",
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ export const inventory = [
     category: "bracelet",
     image: "/Assets/greenwood3.jpg",
     featured: true,
+    alt: "alt text",
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ export const inventory = [
     category: "ring",
     image: "/Assets/greenwood3.jpg",
     featured: true,
+    alt: "alt text",
   },
   {
     id: 3,
@@ -39,6 +43,7 @@ export const inventory = [
     category: "bracelet",
     image: "/Assets/greenwood5.jpg",
     featured: true,
+    alt: "alt text",
   },
 
   {
@@ -48,6 +53,7 @@ export const inventory = [
     category: "bracelet",
     image: "/Assets/irr4.jpeg",
     featured: true,
+    alt: "alt text",
   },
 ];
 
@@ -69,13 +75,12 @@ export const featuredCollection = [
   },
   {
     id: 1,
-    alt: "featured image from collection",
+    alt: "alt text",
     image: "/Assets/irr1.jpeg",
   },
   {
     id: 2,
     alt: "featured image from collection",
-
     image: "/Assets/irr4.jpeg",
   },
   {

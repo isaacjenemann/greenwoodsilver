@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+
 import "./CSS/App.css";
 import "./CSS/Body.css";
 import "./CSS/Mobile.css";
@@ -6,7 +6,6 @@ import Home from "./Components/Home";
 import Menu from "./Components/Menu";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
-import Recent from "./Components/Recent";
 import All from "./Components/Shop/All"
 import Rings from "./Components/Shop/Rings";
 import Bracelets from "./Components/Shop/Bracelets";

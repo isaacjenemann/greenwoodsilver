@@ -14,21 +14,25 @@ function Collection() {
         <img
           className={`collection-image ${showImages ? "image-to-show" : ""}`}
           id="CI1"
+          alt={hoverImages[0].alt}
           src={hoverImages[0].image}
         />
         <img
           className={`collection-image ${showImages ? "image-to-show" : ""}`}
           id="CI2"
+          alt={hoverImages[1].alt}
           src={hoverImages[1].image}
         />
         <img
           className={`collection-image ${showImages ? "image-to-show" : ""}`}
           id="CI3"
+          alt={hoverImages[2].alt}
           src={hoverImages[2].image}
         />
         <img
           className={`collection-image ${showImages ? "image-to-show" : ""}`}
           id="CI4"
+          alt={hoverImages[3].alt}
           src={hoverImages[3].image}
         />
 

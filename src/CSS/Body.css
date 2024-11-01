@@ -1,0 +1,178 @@
+.main{
+  width: 100vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px [header] 1fr [footer] 75px;
+}
+
+.content{
+  width: 100vw;
+  display: flex;
+  grid-row: 2/-2;
+  grid-column: 1/1;
+}
+
+
+
+/*HEADER*/
+.header{
+    display: sticky;
+    top: 100px;
+    grid-row: 1/2;
+    grid-column: 1/1;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-shadow: 0px 1px 40px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0; /* Sticks the header to the top of the viewport */
+    z-index: 1000;
+}
+
+#title{
+    font-size: 1.6em;
+    cursor: pointer;
+    color:var(--second)
+}
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Position absolute for dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%; /* Place directly below collections */
+  background-color: var(--black);
+  padding: 5px;
+  margin-top: 5px;
+  display: flex;
+  left: -10px;
+  flex-direction: column;
+  width: 80px; /* Adjust width as needed */
+  z-index: 600; /* Make sure dropdown is on top */
+  text-transform: lowercase;
+}
+
+.dropdown-item {
+  padding: 5px 10px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  text-decoration:underline ;
+}
+
+.menu{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 30vw;
+    display: flex;
+    font-size: .8em;
+    justify-content: space-between;
+    user-select: none; 
+}
+
+.menu-button{
+  color: var(--white);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu-button:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+
+/*FOOTER*/
+.footer {
+  grid-row: -2/-1;
+  grid-column: 1/1;
+  background-color: var(--black);
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  justify-content:right;
+  position: relative; /* Makes the footer stay fixed at the bottom */
+  bottom: 0; /* Sticks to the bottom of the viewport */
+  width: 100vw; /* Make sure it spans the full width */
+  height: 80px; /* Set the height */
+  z-index: 1001; /* Higher z-index so it appears on top of the content */
+}
+
+
+#footer-image{
+  height: 50px;
+  object-fit: contain;
+  opacity: .85;
+}
+
+#footer-social{
+  height: 25px;
+  object-fit: contain;
+  padding-right: 2em;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+
+/** ITEM **/
+/* ItemPage.css */
+
+/* ItemPage.css */
+
+.item-page-container {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  background-color: var(--black);
+
+}
+
+.item-image-section {
+  width: 50vw;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.item-image {
+  width: 100%;
+  height: auto;
+}
+
+.item-details-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+
+.about-page{
+  height:80vh;
+  display: flex;
+  grid-column: 1/1;
+  grid-row: 2/2;
+  background-color: var(--black);
+}
+.about-image{
+  object-fit:cover;
+  width: 50vw;
+  height: 100%;
+}
+
+.about-text{
+  margin-left: 5%;
+  align-self: center;
+}

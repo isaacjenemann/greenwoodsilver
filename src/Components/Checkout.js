@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-
+const STRIPE_PUBLIC_KEY = 'pk_test_51QAwuUBpbHYdcPQKZmACCXRetQssiliWHXnMIehX1cinjx7NKKwWZ7fanpIJIYhRybZGyLSynBHsFIiYCBbqegnB0028zvJwd7';
 // Load Stripe using the public key from the environment
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
-
-
+const stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
 
 const Checkout = ({ cartItems }) => {
-  console.log(process.env.STRIPE_PUBLIC_KEY)
+  console.log("Stripe Public Key:", STRIPE_PUBLIC_KEY);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -18,19 +16,16 @@ const Checkout = ({ cartItems }) => {
     try {
       const stripe = await stripePromise; // Get Stripe instance
 
-      // Call the serverless function to create a checkout session
-      const response = await fetch(
-        "/.netlify/functions/create-checkout-session",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ items: cartItems }),
-        }
-      );
+      const response = await fetch("/.netlify/functions/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: cartItems }),
+      });
 
-      const { id, error: serverError } = await response.json();
+      const data = await response.json(); // Parse JSON response here
+      const { id, error: serverError } = data;
 
       if (serverError) {
         throw new Error(serverError);

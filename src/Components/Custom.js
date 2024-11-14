@@ -31,11 +31,12 @@ function About() {
           <p className="custom-about">{ABOUT.description}</p>
 
           <form
-            name="contact"
+            name="custom-inquiry"
             method="POST"
             data-netlify="true"
             onSubmit={handleSubmit}
           >
+            <input type="hidden" name="form-name" value="custom-inquiry" />
             <p>
               <label>
                 NAME
@@ -59,7 +60,7 @@ function About() {
             <br />
             <p>
               <button type="submit" disabled={submitted}>
-                {submitted ? "SUBMITTED" : "SUBMIT AN INQUIRY"}
+                {submitted ? "SUBMITTED" : "SUBMIT INQUIRY"}
               </button>
             </p>
           </form>

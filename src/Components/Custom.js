@@ -7,17 +7,13 @@ function About() {
 
   const [submitted, setSubmitted] = useState(false);
 
-    handleSubmit = (e) => {
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "custom-inquiry", ...this.state }),
-      })
-        .then(() => alert("Success!"))
-        .catch((error) => alert(error));
-        setSubmitted(true);
-      e.preventDefault();
-    };
+  function handleSubmit(event) {
+    event.preventDefault();
+    setSubmitted(true);
+    event.target.submit();
+  }
+
+
 
   return (
     <div className="custom">
@@ -35,30 +31,30 @@ function About() {
           <p className="custom-about">{ABOUT.description}</p>
 
           <form
-            name="custom-inquiry"
+            name="custom"
             method="POST"
             data-netlify="true"
             onSubmit={handleSubmit}
           >
-            <input type="hidden" name="form-name" value="custom-inquiry" />
+            <input type="hidden" name="form-name" value="custom" />
             <p>
-              <label>
+              <label htmlFor="name">
                 NAME
                 <br />
-                <input type="text" name="name" />
+                <input type="text" name="name" required />
               </label>
             </p>
             <br />
             <p>
-              <label>
+              <label htmlFor="email">
                 EMAIL
-                <br /> <input type="email" name="email" />
+                <br /> <input type="email" name="email" required />
               </label>
             </p>
             <br />
             <p>
-              <label>
-                DETAILS <br /> <textarea name="message"></textarea>
+              <label htmlFor="message">
+                DETAILS <br /> <textarea name="message" required></textarea>
               </label>
             </p>
             <br />

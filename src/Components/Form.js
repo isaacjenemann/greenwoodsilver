@@ -1,6 +1,11 @@
 function Form(){
     return (
-      <form name="custom" method="POST" data-netlify="true">
+      <form
+        name="custom"
+        method="POST"
+        data-netlify="true"
+        action="/custom/form-success"
+      >
         <input type="hidden" name="form-name" value="custom" />
         <p>
           <label htmlFor="name">

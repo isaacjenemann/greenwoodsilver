@@ -178,3 +178,10 @@ export const INVENTORY = [
   },
 ];
 
+export const PAYMENTS = [
+  "payments/amex.png",
+  "payments/applepay.png",
+  "payments/discover.png",
+  "payments/mastercard.png",
+  "payments/visa.png",
+];

@@ -133,6 +133,19 @@
   cursor: pointer;
 }
 
+.payment{
+  display: flex;
+  height: 2em;
+  width: 15em;
+  justify-content: space-between;
+}
+
+.payment-icon{
+  height: 2.5em;
+}
+
+
+
 
 /** ITEM **/
 /* ItemPage.css */

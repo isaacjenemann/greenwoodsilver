@@ -1,17 +1,7 @@
 import { ABOUT } from "./Inventory";
 import "../CSS/Body.css";
 import { assets } from "../Utils/helpers";
-import { useState } from "react";
-
 function About() {
-
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setSubmitted(true);
-    event.target.submit();
-  }
 
 
 
@@ -34,7 +24,6 @@ function About() {
             name="custom"
             method="POST"
             data-netlify="true"
-            onSubmit={handleSubmit}
           >
             <input type="hidden" name="form-name" value="custom" />
             <p>

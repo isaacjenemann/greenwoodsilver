@@ -1,6 +1,4 @@
 import "../../CSS/Products.css";
-import ProductCard from "../ProductCard";
-import { INVENTORY, CATEGORIES, COLLECTIONS} from "../Inventory";
 
 const Featured = () => {
 

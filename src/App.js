@@ -2,20 +2,18 @@
 import "./CSS/App.css";
 import "./CSS/Body.css";
 import "./CSS/Mobile.css";
+import "./CSS/Cart.css";
 import Home from "./Components/Home";
 import Menu from "./Components/Menu";
 import About from "./Components/About";
-import Contact from "./Components/Contact";
-import All from "./Components/Shop/All"
-import Rings from "./Components/Shop/Rings";
-import Bracelets from "./Components/Shop/Bracelets";
-import Pendants from "./Components/Shop/Pendants";
-import Earrings from "./Components/Shop/Earrings";
+import Custom from "./Components/Custom"
+import Shop from "./Components/Shop"
 import Featured from "./Components/Shop/Featured";
-import { inventory } from "./Components/Inventory";
+import { INVENTORY } from "./Components/Inventory";
 import ItemPage from "./Components/ItemPage";
 import Cart from "./Components/Cart";
 
+import { useState, useEffect} from "react";
 
 import {
   BrowserRouter as Router,
@@ -27,28 +25,97 @@ import {
 
 
 function App() {
+    const [cart, setCart] = useState(() => {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    });
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
+const calculateTotalCost = () => {
+  console.log(cart);
+  return cart.reduce((total, item) => total + parseFloat(item.price), 0);
+};
+
+    // Save cart to localStorage when it changes
+    useEffect(() => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
+
+  const addToCart = (item) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+      if (existingItem) {
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      } else {
+        return [...prevCart, { ...item, quantity: 1 }];
+      }
+    });
+  };
+
+    useEffect(() => {
+      if (isCartOpen) {
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      } else {
+        document.body.style.overflow = ""; // Restore scrolling
+      }
+
+      // Cleanup function to restore overflow when the component unmounts
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }, [isCartOpen]);
+
+  const removeFromCart = (itemId) => {
+    setCart((prevCart) =>
+      prevCart.filter((cartItem) => cartItem.id !== itemId)
+    );
+  };
+
+
+  const cartTotal = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
 
   return (
     <>
       <Router>
         <div className="main">
-          <Menu />
+          <Menu toggleCart={toggleCart} cartTotal={cartTotal()} />
+
           <div className="content">
+            {isCartOpen && (
+              <Cart
+                cart={cart}
+                toggleCart={toggleCart}
+                removeFromCart={removeFromCart}
+                totalCost={calculateTotalCost()}
+              />
+            )}
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/shop" element={<Contact />} />
+              <Route path="/custom" element={<Custom />} />
               <Route
                 path="/shop/:itemId"
-                element={<ItemPage inventory={inventory} />}
+                element={
+                  <ItemPage
+                    inventory={INVENTORY}
+                    cart={cart}
+                    toggleCart={toggleCart}
+                    addToCart={addToCart}
+                    removeFromCart={removeFromCart}
+                  />
+                }
               />
-              <Route path="/shop/all" element={<All />} />
-              <Route path="/shop/rings" element={<Rings />} />
-              <Route path="/shop/bracelets" element={<Bracelets />} />
-              <Route path="/shop/earrings" element={<Earrings />} />
-              <Route path="/shop/pendants" element={<Pendants />} />
+              <Route path="/shop" element={<Shop />} />
               <Route path="/shop/featured" element={<Featured />} />
-              <Route path="/checkout" element={<Cart/>} />
+              <Route path="/checkout" element={<Cart />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>

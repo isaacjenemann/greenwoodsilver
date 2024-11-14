@@ -1,13 +1,20 @@
 import "../../CSS/Products.css";
 import ProductCard from "../ProductCard";
-import { featuredCollection } from "../Inventory";
+import { INVENTORY, CATEGORIES, COLLECTIONS} from "../Inventory";
 
 const Featured = () => {
-  const descriptor = featuredCollection[0];
-  const collection = featuredCollection.slice(1);
 
   return (
+    <></>
+
+  );
+};
+
+export default Featured
+
+/*
     <div className="product-page">
+      
       <h1 className="product-page-featured" style={{ backgroundImage: `url(${descriptor.image})`}}>{descriptor.name}</h1>
       <p>{descriptor.description}</p>
       <div className="product-grid">
@@ -21,7 +28,4 @@ const Featured = () => {
         ))}
       </div>
     </div>
-  );
-};
-
-export default Featured;
+*/

@@ -28,6 +28,7 @@
     -webkit-background-clip:text;
     background-clip: text;
     line-height: 80%;
+    text-transform: uppercase;
 }
 
 #collection-description{
@@ -76,73 +77,96 @@
 
 /* FEATURED */
 
-#featured{
+#featured {
   width: 100vw;
   display: flex;
-  flex-direction: column;
-  min-height: 120vh;
+  flex-direction: row;
+  height: 120vh;
+  justify-content: flex-start;
+  align-items: flex-start; 
+  flex-wrap: wrap;
+}
+
+.featured-image-box {
+  width: 25vw;
+  height: 50%;
+  position: relative; /* To position the overlay correctly */
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color:var(--main);
-  color: var(--black);
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-.featured-info{
-    width: 735px;
-    margin-right: 20px;
-    display: flex;
-    justify-content: space-between;
+  cursor: pointer;
 }
 
-#featured-title{
-    color: var(--black);
-    text-decoration: underline;
+.featured-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
-#featured-button{
-    color: var(--black);
-    border-color: var(--black);
-}
-
-#featured-button:hover{
-    text-decoration: underline;
-}
-
-.featured-row{
+.featured-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(170, 170, 170, 0.2);
   display: flex;
-  width: 100vw;
-  flex-direction: row;
-  align-content: center;
   justify-content: center;
-  padding-top: 2%;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.featured-item{
-  object-fit:cover;
-  align-self: center;
-  justify-self: cetner;
-  width: 250px;
+.featured-image-box:hover .featured-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.shop-all-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:var(--white);
+  color: var(--black);
+}
+
+.shop-all-box h1 {
+  margin: 0;
+  font-size: 2.5em; 
+  text-align: left;
+  height: 100%;
+  width: 100%;
+  padding-left: 1em;
+  align-content: center;
+  z-index: 100;
+  color: var(--white);
+}
+
+#arrow{
+  color: var(--white);
+}
+
+.shop-all-border{
+  position: absolute;
+  height: 60%;
+  width: 70%;
+  background-color: var(--black);
+  border: 3px solid var(--black);
+}
+
+.shop-all-border:hover #arrow{
+  color: var(--second);
+}
+
+.shop-all-border:hover{
+  border-color: var(--second);
 }
 
 
-.featured-image, .featured-hover-image{
-  grid-column: 2/2;
-  grid-row: 2/-2;
-  width: 235px;
-  height: 300px;
-  object-fit:cover;
-  align-self: center;
-  justify-self: cetner;
-}
-.featured-item:hover{
-  cursor:pointer;
-  text-decoration: underline;
-}
-
-.featured-item:hover .featured-image {
-  content: url("../../public/Assets/greenwood1.jpg"); /* New image on hover */
-}
 
 /* CATEGORIES */
 
@@ -187,13 +211,13 @@
     min-width: 15em;
     width: 500px;
     height: 50vh;
-    background-color: var(--main);
+    background-color: var(--black);
     justify-content: center;
 }
 
 #about-button{
-    color: var(--main);
-    border-color: var(--black);
+    color: var(--white);
+    border-color: var(--white);
     background-color: var(--black);
     margin-right: 10%;
     align-self: flex-end;
@@ -208,6 +232,6 @@
     margin-right: 10%;
     align-self: flex-start;
     text-align: left;
-    color: var(--black);
+    color: var(--white);
     font-size: 1.4em;
 }

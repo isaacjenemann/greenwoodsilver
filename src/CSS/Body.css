@@ -3,7 +3,7 @@
   height: auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 80px [header] 1fr [footer] 75px;
+  grid-template-rows: 10vh [header] 1fr [footer] 10vh;
 }
 
 .content{
@@ -27,14 +27,23 @@
     justify-content: space-between;
     padding-left: 5%;
     padding-right: 5%;
-    box-shadow: 0px 1px 40px rgba(0, 0, 0, 0.05);
+    transition: transform .6s ease;
     position: sticky;
     top: 0; /* Sticks the header to the top of the viewport */
     z-index: 1000;
 }
 
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+.header.visible {
+  transform: translateY(0);
+}
+
+
 #title{
-    font-size: 1.6em;
+    font-size: 2em;
     cursor: pointer;
     color:var(--second)
 }
@@ -52,15 +61,15 @@
   padding: 5px;
   margin-top: 5px;
   display: flex;
-  left: -10px;
+  left: 0px;
   flex-direction: column;
-  width: 80px; /* Adjust width as needed */
+  width: 100px; /* Adjust width as needed */
   z-index: 600; /* Make sure dropdown is on top */
   text-transform: lowercase;
 }
 
 .dropdown-item {
-  padding: 5px 10px;
+  padding: 5px 6px;
   color: var(--white);
   text-decoration: none;
 }
@@ -71,9 +80,9 @@
 
 .menu{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 30vw;
+    width:  500px;
     display: flex;
-    font-size: .8em;
+    font-size: .9em;
     justify-content: space-between;
     user-select: none; 
 }
@@ -82,6 +91,7 @@
   color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
+
 }
 
 .menu-button:hover{
@@ -100,7 +110,7 @@
   position: fixed;
   bottom: 0;
   align-items: center;
-  justify-content:right;
+  justify-content:space-between;
   position: relative; /* Makes the footer stay fixed at the bottom */
   bottom: 0; /* Sticks to the bottom of the viewport */
   width: 100vw; /* Make sure it spans the full width */
@@ -127,16 +137,13 @@
 /** ITEM **/
 /* ItemPage.css */
 
-/* ItemPage.css */
-
 .item-page-container {
   width: 100vw;
-  height: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: row;
   gap: 30px;
   background-color: var(--black);
-
 }
 
 .item-image-section {
@@ -147,8 +154,9 @@
 }
 
 .item-image {
-  width: 100%;
-  height: auto;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .item-details-section {
@@ -174,5 +182,93 @@
 
 .about-text{
   margin-left: 5%;
+  margin-right: 8%;
   align-self: center;
+}
+
+
+#signature{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-self: flex-end;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  font-size: .8em;
+  color: rgb(49, 77, 67);
+  text-decoration: underline;
+}
+
+
+.custom{
+  height:80vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--black);
+}
+
+.custom-image-box{
+  width: 60vw;
+}
+
+
+
+#custom-image{
+  object-fit:cover;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-info-box{
+  width: 40vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.custom-info{
+  width: 100%;
+  padding-top: 3em;
+  padding-left: 2em;
+  padding-right: 4em;
+  overflow-y: scroll;
+}
+
+.custom-about{
+  align-self: center;
+}
+
+form{
+  padding-top: 3em;
+}
+
+input{
+  background-color: var(--white);
+  border: 2px solid var(--main); 
+  height: 1.5em;
+  width: 50%;
+  margin-top: .5em;
+}
+
+
+textarea{
+  background-color: var(--white);
+  border: 2px solid var(--main); 
+  width: 90%;
+  min-width: 90%;
+  max-width: 90%;
+  height: 10em;
+  min-height: 10em;
+  margin-top: .5em;
+}
+
+input:focus{
+  border: 2px solid var(--second);
+  outline: none;
+  margin-top: .5em;
+
+}
+
+textarea:focus{
+  border: 2px solid var(--second); /* Set width, style, and color */
+    outline: none; /* Remove default outline if needed */
+
 }

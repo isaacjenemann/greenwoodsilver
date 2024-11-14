@@ -2,14 +2,22 @@
 import "../CSS/Products.css";
 import React from "react";
 
-const ProductCard = ({ name, price, image, size, link }) => {
+const ProductCard = ({ name, price, image, size, inStock, link }) => {
   return (
     <a href={link}>
       <div className="product-card" href>
-        <img src={image} alt={name} className="product-image" />
+        <div className="product-image-box">
+          <img src={image} alt={name} className="product-image" />
+          <div className="product-overlay" />
+        </div>
+
         <h2 className="product-name">{name}</h2>
         <h2 className="product-name">{size}</h2>
-        <p className="product-price">{price}</p>
+        {inStock ? (
+          <p className="product-price">${price}</p>
+        ) : (
+          <p className="product-price">SOLD OUT</p>
+        )}
       </div>
     </a>
   );

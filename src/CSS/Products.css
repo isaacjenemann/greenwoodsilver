@@ -1,15 +1,19 @@
 .product-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
   padding: 20px;
-  min-height: 90vh;
+  min-height: 150vh;
   width: 100%;
   text-align: left;
-  background-color: var(--black);
-  padding-left: 5%;
-  align-content: center;
+  background-color: var(--white);
+  padding: 5% 5%;
+  align-content: baseline;
+  justify-content: center;
 }
 
 .product-page-description{
-    padding-bottom: 5px;
+    padding-bottom: 5em;
 }
 
 .product-page-featured{
@@ -22,43 +26,217 @@
     line-height: 80%;
 }
 
-.product-grid {
+.product-body {
   display: flex;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  justify-content: left;  /* Center the .product-grid inside the .product-body */
+  width: 100%;
 }
 
 
+.product-body {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  justify-content: center;  /* Center the .product-grid inside the .product-body */
+  width: min-content;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: flex-start;  /* Align items to the left */
+  justify-self: center;
+  gap: 4vw;
+  width: 60vw;  /* Shrink-wrap to the content */
+  max-width: 100%;  /* Prevent the grid from exceeding the parent container */
+  margin-left: auto;
+  margin-right: auto;  /* Center the grid within the container */
+}
+
 .product-card {
-  border-radius: 8px;
+  border-radius: 2px;
   text-align: left;
   transition: transform 0.2s;
-  width: 15vw;
+  width: 16vw;
+  text-decoration: none !important;
 }
 
 .product-card:hover{
     cursor: pointer;
 }
 
-
 .product-image {
   width: 100%;
-  height: 18vw;
-  border-radius: 0px 0px 0px 0px;
+  height: 23vw;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.product-overlay{
+  position: absolute; /* Position the overlay on top of the image */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 23vw;
+  border-radius: 2px;
+  background-color: rgba(170, 170, 170, 0.201); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Hide the overlay initially */
+  opacity: 0; /* Initially, the overlay is invisible */
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+  visibility: visible; /* Show the overlay when the image is hovered */
+  opacity: 1;
+}
+
+.product-card:hover .product-name{
+  text-decoration: underline;
 }
 
 .product-name {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: .8em;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1em;
   font-weight: 100;
   margin: 0;
-  color: var(--white);
+  color: var(--black);
+  text-decoration: inherit;
 }
 
 .product-price {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: .8em;
-  color: var(--white);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1em;
+  color: var(--black);
   margin: 0;
+  text-decoration: inherit;
 }
 
+.shop-header{
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  height: min-content;
+}
+.shop-banner{
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  grid-row: 1fr;
+  height: 30vw;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+}
+
+.shop-banner-text{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
+  padding-right: 40%;
+  height: 100%;
+  align-items: left;
+  justify-content: center;
+}
+
+.shop-banner-left{
+  height:100%;
+  color: var(--white);
+  background-color: var(--black);
+  grid-row: 1/-1;
+  grid-column: 1/2;
+}
+
+.shop-banner-right{
+  height:100%;
+  color: var(--white);
+  background-image: url("../../public/Assets/greenwood.jpg");
+  background-size: cover;
+}
+
+.shop-menu{
+    color:var(--black) !important;
+    display: flex;
+    gap: 1em;
+    justify-content: left;
+    padding: 3em 0;
+}
+
+.shop-button{
+    color:var(--black);
+    border-color:var(--black) ;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.shop-button.active {
+    color:var(--white);
+    border-color:var(--black) ;
+    background-color: var(--black);
+    font-size: 1em;
+}
+
+
+.product-image-box{
+  position: relative;
+}
+
+.ring-size-filter {
+  position: relative;
+  display: inline-block;
+}
+
+.ring-size-dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 100%; /* Position below the filter button */
+  left: 0;
+  width:auto;
+  background-color: var(--black);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: .75em;
+  z-index: 10;
+}
+
+.ring-sizes{
+  display: flex;
+  flex-direction: row;
+  width: 12em;
+  flex-wrap: wrap;
+}
+
+.dropdown-item {
+  padding: 0.5em 1em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: center;
+  width: 4em;
+  color:var(--white);
+}
+
+.dropdown-item.active {
+  background-color: var(--second);
+  color:var(--white);
+}
+
+
+#filter-image{
+  padding-top: .2em;
+  object-fit: cover;
+  width: 1.5em;
+}
+
+.shop-button.active #filter-image{
+  filter: invert(1);
+}
+
+.dropdown-label{
+  padding: .5em;
+  color: var(--white);
+  background-color: var(--black);
+  text-align: center;
+}

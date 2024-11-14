@@ -59,9 +59,7 @@ function About() {
             </p>
             <br />
             <p>
-              <button type="submit" disabled={submitted}>
-                {submitted ? "SUBMITTED" : "SUBMIT INQUIRY"}
-              </button>
+              <input type="submit"  value="SUBMIT INQUIRY"/>
             </p>
           </form>
         </div>

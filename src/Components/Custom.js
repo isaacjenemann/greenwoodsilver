@@ -7,13 +7,17 @@ function About() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    setSubmitted(true);
-    event.target.submit();
-  }
-
-
+    handleSubmit = (e) => {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "custom-inquiry", ...this.state }),
+      })
+        .then(() => alert("Success!"))
+        .catch((error) => alert(error));
+        setSubmitted(true);
+      e.preventDefault();
+    };
 
   return (
     <div className="custom">

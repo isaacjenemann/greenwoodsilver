@@ -1,6 +1,5 @@
 import "../../CSS/Body.css";
 import {INVENTORY} from "../Inventory";
-import ProductCard from "../ProductCard";
 import { assets } from "../../Utils/helpers";
 
 function Featured() {

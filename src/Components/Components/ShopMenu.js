@@ -82,7 +82,7 @@ const ShopMenu = ({
           }`}
           onClick={toggleRingSizeDropdown}
         >
-          <img src="../../assets/filter.png" id="filter-image" />
+          <img src="../../assets/filter.png" id="filter-image"  alt="filter button icon"/>
         </button>
         {isRingSizeDropdownOpen && (
           <div className="ring-size-dropdown">

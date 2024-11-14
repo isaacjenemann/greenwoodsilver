@@ -6,7 +6,7 @@ function About() {
   return (
     <div className="custom">
       <div className="custom-image-box">
-        <img id="custom-image" src={assets(ABOUT.image)} />
+        <img id="custom-image" src={assets(ABOUT.image)} alt="Nick working on some custom jewelry"/>
       </div>
 
       <div className="custom-info-box">

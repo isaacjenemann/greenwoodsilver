@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {COLLECTIONS} from "../Inventory";
-import { assets } from "../../Utils/helpers";
+import { assets, urlize } from "../../Utils/helpers";
 import "../../CSS/Home.css";
 
 function Collection() {
@@ -55,13 +55,15 @@ const featuredCollection = Object.values(COLLECTIONS).find(
             {title}
           </h1>
           <p id="collection-description">{description}</p>
-          <button
-            id="collection-button"
-            onMouseEnter={() => setShowImages(true)}
-            onMouseLeave={() => setShowImages(false)}
-          >
-            shop the collection
-          </button>
+          <a href={`/shop/${urlize(featuredCollection.key)}`}>
+            <button
+              id="collection-button"
+              onMouseEnter={() => setShowImages(true)}
+              onMouseLeave={() => setShowImages(false)}
+            >
+              shop the collection
+            </button>
+          </a>
         </div>
       </div>
     </>

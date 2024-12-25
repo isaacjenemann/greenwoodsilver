@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { COLLECTIONS } from "../Inventory";
+import { urlize } from "../../Utils/helpers";
 
 function Header({ toggleCart, cartTotal }) {
   const collections = Object.values(COLLECTIONS).map(
-    (collection) => collection.name
+    (collection) => collection
   );
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -68,15 +69,13 @@ function Header({ toggleCart, cartTotal }) {
           </p>
           {isDropdownOpen && (
             <div className="dropdown">
-              {collections.map((collectionName, index) => (
+              {collections.map((collection, index) => (
                 <a
                   key={index}
                   className="dropdown-item"
-                  href={`/shop/${collectionName
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")}`}
+                  href={`/shop/${urlize(collection.key)}`}
                 >
-                  {collectionName}
+                  {collection.name}
                 </a>
               ))}
             </div>

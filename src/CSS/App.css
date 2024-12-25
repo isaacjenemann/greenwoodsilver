@@ -1,7 +1,7 @@
 
 :root {
   --main: rgb(233, 227, 226);
-  --white: rgb(224, 224, 224);
+  --white: rgb(222, 212, 197);
   --black: rgb(33, 47, 42);
   --second:rgb(97, 162, 124);
   font-size: 14px;
@@ -48,6 +48,14 @@ button{
 }
 
 button:hover{
-  border-color: rgb(119, 148, 130);
-  color: rgb(119, 148, 130);
+  border-color: var(--second);
+  color: var(--second);
+}
+
+.right{
+  align-content: right;
+}
+
+.left{
+  align-content: left;
 }

@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import "../CSS/Products.css";
-import ProductCard from "./ProductCard";
+import ProductCard from "./Shop/ProductCard";
 import { CATEGORIES, INVENTORY } from "./Inventory";
 import { assets } from "../Utils/helpers";
-import ShopMenu from "./Components/ShopMenu";
+import ShopMenu from "./Shop/ShopMenu";
+import { urlize } from "../Utils/helpers";
 
 const Shop = () => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  // Initialize selectedCategories with all categories
+  const [selectedCategories, setSelectedCategories] = useState(
+    Object.values(CATEGORIES)
+  );
   const [ringSizeFilter, setRingSizeFilter] = useState([]); // Now an array for multiple sizes
 
   const handleCategoryClick = (category) => {
-    setSelectedCategories((prevCategories) =>
-      prevCategories.includes(category)
+    setSelectedCategories((prevCategories) => {
+      // If "EVERYTHING" is currently active, deselect all and select only the clicked category
+      if (prevCategories.length === Object.values(CATEGORIES).length) {
+        return [category];
+      }
+
+      // Otherwise, toggle the clicked category
+      return prevCategories.includes(category)
         ? prevCategories.filter((cat) => cat !== category)
-        : [...prevCategories, category]
-    );
+        : [...prevCategories, category];
+    });
   };
 
   // Filter products based on selected categories and ring size
@@ -23,7 +33,9 @@ const Shop = () => {
       (selectedCategories.length > 0
         ? selectedCategories.includes(product.category)
         : true) &&
-      (ringSizeFilter.length > 0 && product.category===CATEGORIES.RING ? ringSizeFilter.includes(product.size) : true) // Adjust based on inventory structure
+      (ringSizeFilter.length > 0 && product.category === CATEGORIES.RING
+        ? ringSizeFilter.includes(product.size)
+        : true) // Adjust based on inventory structure
   );
 
   return (
@@ -39,7 +51,9 @@ const Shop = () => {
               </p>
             </div>
           </div>
-          <div className="shop-banner-right"></div>
+          <div className="shop-banner-right">
+            <img className="banner-image" src={assets("greenwood.jpg")} />
+          </div>
         </div>
         {/* ShopMenu component with necessary props */}
         <ShopMenu
@@ -54,10 +68,12 @@ const Shop = () => {
         <div className="product-grid">
           {filteredProducts.map((product) => (
             <ProductCard
-              link={`/shop/${product.id}`}
+              link={`/shop/${product.id}/${urlize(product.name)}`}
               key={product.id}
               name={product.name}
+              category={product.category}
               price={product.price}
+              size = {product.size}
               inStock={product.inStock}
               image={assets(product.image[0])}
             />

@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { assets } from "../Utils/helpers";
+import { assets } from "../../Utils/helpers";
 function ItemPage({ inventory, cart, addToCart, removeFromCart, toggleCart }) {
   const { itemId } = useParams();
   const item = inventory.find((item) => item.id === parseInt(itemId));

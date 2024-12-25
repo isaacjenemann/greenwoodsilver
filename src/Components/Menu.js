@@ -1,5 +1,5 @@
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import Header from "./Home/Header";
+import Footer from "./Home/Footer";
 
 function Menu({ toggleCart, cartTotal }) {
   return (

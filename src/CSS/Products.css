@@ -7,60 +7,32 @@
   width: 100%;
   text-align: left;
   background-color: var(--white);
-  padding: 5% 5%;
+  padding: 6% 15%;
   align-content: baseline;
   justify-content: center;
 }
-
-.product-page-description{
-    padding-bottom: 5em;
-}
-
-.product-page-featured{
-    font-size: clamp(2rem, 4vw, 5rem);
-    background-size: contain;
-    background-position:left;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip:text;
-    background-clip: text;
-    line-height: 80%;
-}
-
-.product-body {
-  display: flex;
-  grid-column: 1 / -1;
-  grid-row: 2 / -1;
-  justify-content: left;  /* Center the .product-grid inside the .product-body */
-  width: 100%;
-}
-
 
 .product-body {
   display: flex;
   grid-column: 1 / -1;
   grid-row: 2 / -1;
   justify-content: center;  /* Center the .product-grid inside the .product-body */
-  width: min-content;
+  width: 100%;
 }
-
 .product-grid {
-  display: flex;
-  flex-wrap:wrap;
-  justify-content: flex-start;  /* Align items to the left */
-  justify-self: center;
-  gap: 4vw;
-  width: 60vw;  /* Shrink-wrap to the content */
-  max-width: 100%;  /* Prevent the grid from exceeding the parent container */
-  margin-left: auto;
-  margin-right: auto;  /* Center the grid within the container */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  gap: 2em;
+  width: 100%;
+  justify-content: center;
 }
 
 .product-card {
-  border-radius: 2px;
-  text-align: left;
-  transition: transform 0.2s;
-  width: 16vw;
-  text-decoration: none !important;
+  margin: 0; /* No default margins */
+}
+
+.product-card:not(:nth-child(4n+1)) {
+  margin-left: 1em; /* Add gap between items, skip first in row */
 }
 
 .product-card:hover{
@@ -69,7 +41,7 @@
 
 .product-image {
   width: 100%;
-  height: 23vw;
+  height: 300px;
   border-radius: 2px;
   object-fit: cover;
 }
@@ -80,7 +52,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 23vw;
+  height: 100%;
+  height: 300px;
   border-radius: 2px;
   background-color: rgba(170, 170, 170, 0.201); /* Semi-transparent background */
   display: flex;
@@ -99,8 +72,10 @@
 .product-card:hover .product-name{
   text-decoration: underline;
 }
-
-.product-name {
+.product-info{
+  width: 100%;
+}
+.product-name, .product-size{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1em;
   font-weight: 100;
@@ -109,59 +84,74 @@
   text-decoration: inherit;
 }
 
+.product-size{
+  font-size: .9em;
+}
+
 .product-price {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1em;
+  font-size: .9em;
   color: var(--black);
   margin: 0;
   text-decoration: inherit;
+  justify-self: left ;
 }
 
-.shop-header{
-  grid-column: 1/-1;
-  grid-row: 1/2;
-  height: min-content;
-}
-.shop-banner{
+.shop-header {
   display: grid;
-  grid-template-columns: 6fr 4fr;
-  grid-row: 1fr;
-  height: 30vw;
-  grid-column: 1/-1;
-  grid-row: 1/2;
+  height: auto;
+  grid-template-rows: auto auto; /* Two rows: banner and menu */
+  width: 100%;
+}
+
+.shop-banner {
+  display: grid;
+  height: 70vh;
+  grid-template-columns: 5fr 8fr;
+  overflow: hidden;
+  justify-self: center;
+}
+
+.shop-menu {
+  display: flex; /* Flexbox for the menu itself */
+  gap: 1em;
+  justify-content: space-evenly;
+  padding: 2em 0;
+  width: 100%;
 }
 
 .shop-banner-text{
   display: flex;
   flex-direction: column;
-  padding-left: 10%;
-  padding-right: 40%;
-  height: 100%;
   align-items: left;
   justify-content: center;
+  padding-left: 3em;
+  padding-right: 3em;
+  flex-shrink: 1;
 }
 
 .shop-banner-left{
-  height:100%;
+  flex-shrink: .5;
   color: var(--white);
   background-color: var(--black);
   grid-row: 1/-1;
   grid-column: 1/2;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: inherit;
 }
 
 .shop-banner-right{
-  height:100%;
-  color: var(--white);
-  background-image: url("../../public/Assets/greenwood.jpg");
-  background-size: cover;
+  grid-row: 1/-1;
+  grid-column: 2/-1;
+  height: inherit;
 }
 
-.shop-menu{
-    color:var(--black) !important;
-    display: flex;
-    gap: 1em;
-    justify-content: left;
-    padding: 3em 0;
+.banner-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .shop-button{
@@ -239,4 +229,13 @@
   color: var(--white);
   background-color: var(--black);
   text-align: center;
+}
+
+#shop-menu-label{
+  color: var(--black);
+}
+
+
+.banner-spacer{
+  height: 55px;
 }

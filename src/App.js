@@ -1,4 +1,3 @@
-
 import "./CSS/App.css";
 import "./CSS/Body.css";
 import "./CSS/Mobile.css";
@@ -6,14 +5,14 @@ import "./CSS/Cart.css";
 import Home from "./Components/Home";
 import Menu from "./Components/Menu";
 import About from "./Components/About";
-import Custom from "./Components/Custom"
-import Shop from "./Components/Shop"
-import Featured from "./Components/Shop/Featured";
+import Custom from "./Components/Custom";
+import Shop from "./Components/Shop";
+import Featured from "./Components/Collection";
 import { INVENTORY } from "./Components/Inventory";
-import ItemPage from "./Components/ItemPage";
-import Cart from "./Components/Cart";
+import ItemPage from "./Components/Shop/ItemPage";
+import Cart from "./Components/Shop/Cart";
 
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import {
   BrowserRouter as Router,
@@ -22,24 +21,22 @@ import {
   Navigate,
 } from "react-router-dom";
 
-
-
 function App() {
-    const [cart, setCart] = useState(() => {
-      const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
-    });
-    const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-const calculateTotalCost = () => {
-  console.log(cart);
-  return cart.reduce((total, item) => total + parseFloat(item.price), 0);
-};
+  const calculateTotalCost = () => {
+    console.log(cart);
+    return cart.reduce((total, item) => total + parseFloat(item.price), 0);
+  };
 
-    // Save cart to localStorage when it changes
-    useEffect(() => {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]);
+  // Save cart to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (item) => {
     setCart((prevCart) => {
@@ -56,25 +53,24 @@ const calculateTotalCost = () => {
     });
   };
 
-    useEffect(() => {
-      if (isCartOpen) {
-        document.body.style.overflow = "hidden"; // Prevent scrolling
-      } else {
-        document.body.style.overflow = ""; // Restore scrolling
-      }
+  useEffect(() => {
+    if (isCartOpen) {
+      document.body.style.overflow = "hidden"; // Prevent scrolling
+    } else {
+      document.body.style.overflow = ""; // Restore scrolling
+    }
 
-      // Cleanup function to restore overflow when the component unmounts
-      return () => {
-        document.body.style.overflow = "";
-      };
-    }, [isCartOpen]);
+    // Cleanup function to restore overflow when the component unmounts
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isCartOpen]);
 
   const removeFromCart = (itemId) => {
     setCart((prevCart) =>
       prevCart.filter((cartItem) => cartItem.id !== itemId)
     );
   };
-
 
   const cartTotal = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
@@ -103,7 +99,7 @@ const calculateTotalCost = () => {
               <Route path="/custom" element={<Custom />} />
               <Route path="/custom/form-success" element={<Custom />} />
               <Route
-                path="/shop/:itemId"
+                path="/shop/:itemId/:itemName"
                 element={
                   <ItemPage
                     inventory={INVENTORY}
@@ -114,8 +110,8 @@ const calculateTotalCost = () => {
                   />
                 }
               />
+              <Route path="/shop/:key" element={<Featured />} />
               <Route path="/shop" element={<Shop />} />
-              <Route path="/shop/featured" element={<Featured />} />
               <Route path="/checkout" element={<Cart />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>

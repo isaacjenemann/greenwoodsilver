@@ -1,3 +1,5 @@
+import { urlize } from "../Utils/helpers";
+
 // Define constants for categories and collections
 export const CATEGORIES = {
   RING: "rings",
@@ -9,16 +11,19 @@ export const CATEGORIES = {
 
 export const RINGSIZE = [5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12];
 
-export const COLLECTIONS = {
-  MOTHER_OF_PEARL: {
+export const COLLECTIONS = [
+  {
+    key: "MOP",
     name: "mother of pearl",
     titleImage: "irridescent.jpg",
+    titleAlt: "irridescent texture background",
     hoverImages: ["irr.gif", "irr1.jpeg", "irr4.jpeg", "irr6.jpg"],
     hoverAlts: ["irr.gif", "irr1.jpeg", "irr4.jpeg", "irr6.jpg"],
     description: "Irridescent, Irresistable, Irrefutably Greenwood",
     featured: true,
   },
-  AMALFI: {
+  {
+    key: "AMALFI",
     name: "amalfi",
     titleImage: "amalfi1.jpeg",
     hoverImages: [
@@ -31,7 +36,8 @@ export const COLLECTIONS = {
     description: "Sourced from, inspired by, dreaming of the Amalfi Coast",
     featured: false,
   },
-  TEXTURE: {
+  {
+    key: "TEXTURE",
     name: "texture",
     titleImage: "",
     hoverImages: ["irr.gif", "irr1.jpeg", "irr2.jpeg", "irr6.jpg"],
@@ -39,7 +45,8 @@ export const COLLECTIONS = {
     description: "Unpretrentious, gritty, industrial",
     featured: false,
   },
-};
+];
+
 
 
 export const ABOUT = 
@@ -174,6 +181,45 @@ export const INVENTORY = [
     category: CATEGORIES.PENDANT,
     collection: null,
     inStock: false,
+    alt: ["shiny ring", "shiny ring side image", "", "", ""],
+  },
+  {
+    id: 11,
+    name: "Hummus Boards",
+    size: "16mm",
+    price: 2200,
+    description: "stained glass hummus",
+    image: ["amalfi5.jpeg", "amalfi1.jpeg"],
+    category: CATEGORIES.PENDANT,
+    collection: null,
+    inStock: true,
+    featured: true,
+    alt: ["shiny ring", "shiny ring side image", "", "", ""],
+  },
+  {
+    id: 12,
+    name: "Hummus Boards",
+    size: "16mm",
+    price: 2200,
+    description: "stained glass hummus",
+    image: ["greenwood5.jpg", "amalfi4.jpeg", "amalfi5.jpeg", "amalfi1.jpeg"],
+    category: CATEGORIES.PENDANT,
+    collection: null,
+    featured: true,
+    inStock: true,
+    alt: ["shiny ring", "shiny ring side image", "", "", ""],
+  },
+  {
+    id: 13,
+    name: "Hummus Boards",
+    size: "16mm",
+    price: 2200,
+    description: "stained glass hummus",
+    image: ["irr2.jpeg"],
+    category: CATEGORIES.PENDANT,
+    collection: null,
+    featured: true,
+    inStock: true,
     alt: ["shiny ring", "shiny ring side image", "", "", ""],
   },
 ];

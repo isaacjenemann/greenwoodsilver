@@ -1,9 +1,8 @@
 import "../CSS/Body.css";
-import About from "./Components/About"
-import Collection from "./Components/Collection";
-import Featured from "./Components/Featured";
-import Categories from "./Components/Categories";
-
+import About from "./Home/About";
+import Collection from "./Home/Collection";
+import Featured from "./Home/Featured";
+import Categories from "./Home/Categories";
 
 function Home() {
   return (

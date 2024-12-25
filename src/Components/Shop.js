@@ -52,7 +52,7 @@ const Shop = () => {
             </div>
           </div>
           <div className="shop-banner-right">
-            <img className="banner-image" src={assets("greenwood.jpg")} />
+            <img className="banner-image" alt="banner decoration" src={assets("greenwood.jpg")} />
           </div>
         </div>
         {/* ShopMenu component with necessary props */}

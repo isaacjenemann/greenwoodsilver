@@ -1,6 +1,5 @@
 import { PAYMENTS } from "../Inventory";
 import { assets } from "../../Utils/helpers";
-import { ReactTyped } from "react-typed";
 
 function Footer(){
   const payments = PAYMENTS;

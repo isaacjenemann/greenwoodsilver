@@ -30,7 +30,7 @@ function Collection(){
             </div>
           </div>
           <div className="shop-banner-right">
-            <img className="banner-image" src={assets(collection.titleImage)} />
+            <img className="banner-image" alt="Item visual" src={assets(collection.titleImage)} />
           </div>
         </div>
         <div className="banner-spacer" />

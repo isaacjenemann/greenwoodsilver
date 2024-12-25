@@ -7,12 +7,6 @@ function Footer(){
     return (
       <div className="footer">
         <div className="footer-column" id="left">
-          <a href="https://www.isaacjenemann.com/" id="signature">
-            built by isaac © 2024
-          </a>
-        </div>
-
-        <div className="footer-column">
           <div className="socials">
             <a href="https://www.instagram.com/greenwood.silver/">
               <img
@@ -22,7 +16,12 @@ function Footer(){
               />
             </a>
           </div>
+          <a href="https://www.isaacjenemann.com/" id="signature">
+            built by isaac © 2024
+          </a>
         </div>
+
+        <div className="footer-column"></div>
 
         <div className="footer-column" id="right">
           <div className="payment">

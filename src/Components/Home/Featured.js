@@ -36,7 +36,7 @@ function Featured() {
         <a
           key={product.id}
           className="featured-image-box"
-          href={`/shop/${product.id}`}
+          href={`/shop/${product.id}/${product.name}`}
         >
           <img
             src={assets(product.image[0])}

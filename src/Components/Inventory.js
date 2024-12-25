@@ -1,4 +1,3 @@
-import { urlize } from "../Utils/helpers";
 
 // Define constants for categories and collections
 export const CATEGORIES = {

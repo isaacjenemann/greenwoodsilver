@@ -1,5 +1,4 @@
 import { assets } from "../../Utils/helpers";
-import { ReactTyped } from "react-typed";
 
 function Categories() {
   return (
